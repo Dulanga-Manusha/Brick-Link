@@ -1,31 +1,35 @@
+// index.js
+
 import express from 'express';
 import cors from 'cors';
 import { connectDB } from './config/db.js';
 import userRouter from './routes/userRoute.js';
+import contractRoute from "./routes/contractRoute.js"
 
+// Load environment variables from .env file
 import 'dotenv/config';
 
+// Connect to MongoDB
+connectDB();
 
-
-//app config
+// Create Express server
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
-//middleware
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-//db connection
-connectDB();
+// API endpoints
+app.use('/api/user', userRouter);
+app.use('/api/contract', contractRoute);
 
-// api main endpoints
-app.use("/api/user", userRouter);
-
+// Root endpoint
 app.get('/', (req, res) => {
-    res.send('API working')
+    res.send('API working');
 });
 
+// Start the server
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 });
-

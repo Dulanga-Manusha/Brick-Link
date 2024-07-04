@@ -2,6 +2,7 @@ import userModel from "../models/userModel.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import validator from "validator";
+import dotenv from "dotenv/config";
 
 
 // login user
@@ -30,7 +31,7 @@ const loginUser = async (req, res) => {
 }
 
 const createToken = (id, role) => {
-    return jwt.sign({ id, role }, process.env.JWT_SECRET);  // Include role in token
+    return jwt.sign({ id, role }, "secret_key");  // Include role in token
 }
 
 // register user

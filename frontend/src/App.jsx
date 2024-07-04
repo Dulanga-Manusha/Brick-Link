@@ -7,6 +7,7 @@ import LoginPopup from './components/LoginPopup/LoginPopup'
 import ClientPage from './pages/ClientPage/ClientPage'
 import Contractor from './pages/Contractor/Contractor'
 import Worker from './pages/Worker/Worker'
+import ClientProjects from './components/ClientProjects/ClientProjects'
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false)
