@@ -3,14 +3,15 @@ import contractModel from "../models/contractModel.js";
 
 
 const getClientContracts = async (req, res) => {
-    try {
+  try {
       const clientId = req.params.clientId;
-      const contracts = await contractModel.find({ clientId: clientId });
+      const contracts = await contractModel.find({clientId : clientId});
+      console.log(contracts);
       res.status(200).json(contracts);
-    } catch (error) {
+  } catch (error) {
       res.status(500).json({ message: error.message });
-    }
-  };
+  }
+};
   
   // Get a specific contract by ID
   const getContractById = async (req, res) => {

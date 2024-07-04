@@ -10,6 +10,7 @@ const ClientPage = ({ userId, userRole }) => {
     const fetchContracts = async () => {
       try {
         const response = await axios.get(`/api/contracts/client/${userId}`);
+        console.log(response.data)
         setContracts(response.data);
       } catch (error) {
         console.error('Error fetching contracts:', error);
