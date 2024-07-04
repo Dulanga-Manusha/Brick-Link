@@ -28,12 +28,12 @@ const getClientContracts = async (req, res) => {
   
   // Create a new contract
   const createContract = async (req, res) => {
-    const { title, description, clientId } = req.body;
+    const { title, description, clientId, bids } = req.body;
     const newContract = new contractModel({
       title,
       description,
       clientId,
-      bids: []
+      bids:bids || []
     });
   
     try {

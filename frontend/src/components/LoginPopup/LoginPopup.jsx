@@ -50,6 +50,7 @@ const LoginPopup = ({setShowLogin}) => {
 
         if (response.data.success) {
             setToken(response.data.token);
+
             localStorage.setItem('token', response.data.token);
 
             const tokenData = parseJwt(response.data.token);
@@ -61,11 +62,11 @@ const LoginPopup = ({setShowLogin}) => {
             const userId = tokenData.id;
 
             if (userRole === 'client') {
-                navigate(`/client/${userId}`);
+                navigate(`/client/${userId}`, { state: { userId, userRole } });
             } else if (userRole === 'contractor') {
-                navigate(`/contractor/${userId}`);
+                navigate(`/contractor/${userId}`, { state: { userId, userRole } });
             } else if (userRole === 'worker') {
-                navigate(`/worker/${userId}`);
+                navigate(`/worker/${userId}` , { state: { userId, userRole } });
             }
 
             setShowLogin(false);

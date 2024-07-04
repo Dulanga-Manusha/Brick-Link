@@ -18,7 +18,6 @@ const App = () => {
           <Navbar  setShowLogin ={setShowLogin} />
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/clients' element={<ClientProjects />} />
             <Route path='/client/:id' element={<ClientPage />} />
             <Route path='/contractor/:id' element={<Contractor />} />
             <Route path='/worker/:id' element={<Worker />} />

@@ -1,0 +1,47 @@
+/* ClientPage.css */
+
+.contracts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+  
+  .contract-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    width: 300px;
+    margin: 8px;
+    transition: transform 0.2s;
+  }
+  
+  .contract-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .contract-card h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.5em;
+  }
+  
+  .contract-card p {
+    margin: 0 0 16px 0;
+    font-size: 1em;
+  }
+  
+  .contract-card ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .contract-card ul li {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px;
+    margin: 4px 0;
+  }
+  
