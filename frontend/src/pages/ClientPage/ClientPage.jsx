@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
 import './ClientPage.css'; // Import the CSS file
 
@@ -30,6 +30,7 @@ const ClientPage = () => {
   return (
     <div>
       <h1>Your Contracts</h1>
+      
       <div className="contracts">
         {contracts.length > 0 ? (
           contracts.map(contract => (
@@ -54,6 +55,9 @@ const ClientPage = () => {
           <p>No contracts found.</p>
         )}
       </div>
+      <Link to="/addContract" state={{ userId, userRole: 'client' }}>
+        <button className='add-contract-button'>Add New Contract</button>
+      </Link>
     </div>
   );
 };
