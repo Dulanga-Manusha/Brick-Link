@@ -8,6 +8,7 @@ import ClientPage from './pages/ClientPage/ClientPage'
 import Contractor from './pages/Contractor/Contractor'
 import Worker from './pages/Worker/Worker'
 import ClientProjects from './components/ClientProjects/ClientProjects'
+import AddContract from './pages/ClientPage/ClientContractCreate'
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false)
@@ -18,6 +19,7 @@ const App = () => {
           <Navbar  setShowLogin ={setShowLogin} />
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path='/addContract' element={<AddContract />} />
             <Route path='/client/:id' element={<ClientPage />} />
             <Route path='/contractor/:id' element={<Contractor />} />
             <Route path='/worker/:id' element={<Worker />} />
