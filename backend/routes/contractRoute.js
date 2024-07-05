@@ -1,8 +1,11 @@
 import express from 'express';
-import { createContract, getClientContracts, getContractById, addBidToContract, deleteContract } from '../controllers/contractController.js';
+import { getAllContracts,createContract, getClientContracts, getContractById, addBidToContract, deleteContract } from '../controllers/contractController.js';
 
 const route = express.Router();
 
+
+
+route.get("/getAllContracts", getAllContracts);
 
 route.get('/client/:clientId', getClientContracts);
 

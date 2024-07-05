@@ -13,6 +13,19 @@ const getClientContracts = async (req, res) => {
   }
 };
   
+
+
+  const getAllContracts = async (req, res) => {
+    try {
+      const contracts = await contractModel.find(); // Fetch all contracts
+      res.status(200).json(contracts);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+
+
+
   // Get a specific contract by ID
   const getContractById = async (req, res) => {
     try {
@@ -47,6 +60,8 @@ const getClientContracts = async (req, res) => {
   // Add a bid to a contract
   const addBidToContract = async (req, res) => {
     const { bidId, bidderName, amount } = req.body;
+    console.log("yo yo",req.body);
+
   
     try {
       const contract = await contractModel.findById(req.params.id);
@@ -60,6 +75,7 @@ const getClientContracts = async (req, res) => {
         amount,
         timestamp: new Date()
       });
+
   
       const updatedContract = await contract.save();
       res.status(200).json(updatedContract);
@@ -84,4 +100,4 @@ const getClientContracts = async (req, res) => {
   };
   
 
-export { createContract, getClientContracts, getContractById, addBidToContract, deleteContract };
+export { getAllContracts,createContract, getClientContracts, getContractById, addBidToContract, deleteContract };

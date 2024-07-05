@@ -8,10 +8,10 @@
   }
   
   .contract-card {
-    background-color: #fff;
+    background-color: #000000;
     border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(74, 74, 74, 0.1);
     padding: 16px;
     width: 300px;
     margin: 8px;
@@ -38,7 +38,7 @@
   }
   
   .contract-card ul li {
-    background-color: #f9f9f9;
+    background-color: #434343;
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 8px;
@@ -70,7 +70,8 @@
 
 
 
-/* AddContractPage.css */
+
+  /* AddContractPage.css */
 
 .add-contract-page {
   display: flex;
@@ -112,21 +113,20 @@ textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
-  border-radius: 20px; /* Smooth edges */
+  border-radius: 15px;
   font-size: 1em;
-  transition: border-color 0.2s, box-shadow 0.2s; /* Smooth transition for hover effect */
+  transition: border-color 0.2s;
 }
 
 input:focus,
 textarea:focus {
-  border-color: #828282;
+  border-color: #565656;
   outline: none;
-  box-shadow: 0 0 5px rgba(13, 13, 13, 0.5); /* Add a slight shadow on focus */
 }
 
 button {
   padding: 10px 20px;
-  background-color: #555555; /* Green */
+  background-color: #474747; /* Green */
   color: white;
   border: none;
   cursor: pointer;
@@ -136,7 +136,6 @@ button {
 }
 
 button:hover {
-  background-color: #2c2c2c;
+  background-color: #262626;
   transform: scale(1.05);
 }
-
