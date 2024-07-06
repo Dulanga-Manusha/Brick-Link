@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 .footer{
+=======
+.footer {
+>>>>>>> Stashed changes
     color: #d9d9d9;
     background-color: #323232;
     display: flex;
@@ -7,25 +11,43 @@
     gap: 20px;
     padding: 20px 8vw;
     padding-top: 80px;
+<<<<<<< Updated upstream
     margin-top: 100px;
 }
 .footer-content{
+=======
+    margin-top: 50px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+.footer-content {
+>>>>>>> Stashed changes
     width: 100%;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     gap: 80px;
 }
+<<<<<<< Updated upstream
 .footer-content-left, .footer-content-center, .footer-content-right{
+=======
+.footer-content-left, .footer-content-center, .footer-content-right {
+>>>>>>> Stashed changes
     display: flex;
     flex-direction: column;
     align-items: start;
     gap: 20px;
 }
+<<<<<<< Updated upstream
 .footer-content-left li, .footer-content-center li, .footer-content-right li{
+=======
+.footer-content-left li, .footer-content-center li, .footer-content-right li {
+>>>>>>> Stashed changes
     list-style: none;
     margin-bottom: 10px;
     cursor: pointer;
 }
+<<<<<<< Updated upstream
 .footer-content-center h2, .footer-content-right h2{
     color: white;
 }
@@ -34,19 +56,45 @@
     margin-right: 15px;
 }
 .footer hr{
+=======
+.footer-content-center h2, .footer-content-right h2 {
+    color: white;
+}
+.footer-social-icon img {
+    width: 40px;
+    margin-right: 15px;
+}
+.footer hr {
+>>>>>>> Stashed changes
     width: 100%;
     height: 2px;
     margin: 20px 0;
     background-color: grey;
     border: none;
 }
+<<<<<<< Updated upstream
 @media (max-width:750px) {
     .footer-content{
+=======
+.footer-copyright {
+    text-align: center;
+}
+
+@media (max-width:750px) {
+    .footer-content {
+>>>>>>> Stashed changes
         display: flex;
         flex-direction: column;
         gap: 35px;
     }
+<<<<<<< Updated upstream
     .footer-copyright{
         text-align: center;
     }
 }
+=======
+    .footer-copyright {
+        text-align: center;
+    }
+}
+>>>>>>> Stashed changes

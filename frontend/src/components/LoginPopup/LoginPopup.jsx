@@ -50,6 +50,10 @@ const LoginPopup = ({setShowLogin}) => {
 
         if (response.data.success) {
             setToken(response.data.token);
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
             localStorage.setItem('token', response.data.token);
 
             const tokenData = parseJwt(response.data.token);
@@ -61,11 +65,19 @@ const LoginPopup = ({setShowLogin}) => {
             const userId = tokenData.id;
 
             if (userRole === 'client') {
+<<<<<<< Updated upstream
                 navigate(`/client/${userId}`);
             } else if (userRole === 'contractor') {
                 navigate(`/contractor/${userId}`);
             } else if (userRole === 'worker') {
                 navigate(`/worker/${userId}`);
+=======
+                navigate(`/client/${userId}`, { state: { userId, userRole } });
+            } else if (userRole === 'contractor') {
+                navigate(`/contractor/${userId}`, { state: { userId, userRole } });
+            } else if (userRole === 'worker') {
+                navigate(`/worker/${userId}` , { state: { userId, userRole } });
+>>>>>>> Stashed changes
             }
 
             setShowLogin(false);
@@ -100,7 +112,11 @@ const LoginPopup = ({setShowLogin}) => {
             </div>
             <button type='submit'>{currentState==="Sign Up"?"Create Account":"Login"}</button>
             <div className="login-popup-condition">
+<<<<<<< Updated upstream
                 <input type="checkbox" required/>
+=======
+                <input className='check' type="checkbox" required/>
+>>>>>>> Stashed changes
                 <p>By continuing, I agree to the terms of use & privacy policy.</p>
             </div>
             {currentState==="Login"? 

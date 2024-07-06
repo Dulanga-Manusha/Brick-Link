@@ -1,0 +1,43 @@
+.sidebar {
+  width: 250px;
+  height: calc(80vh - 100px); /* Subtract the height of the navbar */
+  background-color: #f8f9fa; /* Lighter background color */
+
+  padding: 20px;
+  overflow-y: auto;
+  color: #343a40; /* Darker text color */
+  border-right: 2px solid #adb5bd; /* Border to distinguish from content */
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 20px;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #495057; /* Darker text color */
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.sidebar ul li a:hover {
+  color: #343a40; /* Change color on hover */
+}
+
+.with-sidebar {
+  display: flex;
+  padding-top: 2%;
+  padding-left: 5% ;
+}
+
+.page-content {
+  padding: 20px;
+  padding-top: 0;
+  width: 100%; /* Ensure content takes the remaining width */
+}
