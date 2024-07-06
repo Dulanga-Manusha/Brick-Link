@@ -10,6 +10,7 @@ const ContractorPage = () => {
   const [contracts, setContracts] = useState([]);
   const [showBidForm, setShowBidForm] = useState(false);
   const { userId, userRole } = location.state || {};
+  console.log(userId, userRole)
   const [bidData, setBidData] = useState({
     bidId: '',
     bidderName: '',

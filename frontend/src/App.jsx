@@ -6,14 +6,15 @@ import Footer from './components/Footer/Footer'
 import LoginPopup from './components/LoginPopup/LoginPopup'
 import ClientPage from './pages/ClientPage/ClientPage'
 import Contractor from './pages/Contractor/Contractor'
-import FindWorks from './pages/Worker/FindWorks'
+import Worker from './pages/Worker/Worker'
 import AddContract from './pages/ClientPage/ClientContractCreate'
 import withSidebar from './components/withSidebar/withSidebar';
 import AcceptedContracts from './pages/ClientPage/AcceptedContracts'
 import MyContracts from './pages/Contractor/MyContracts'
+import AppliedWorks from './pages/Worker/AppliedWorks'
 
 const ClientWithSidebar = withSidebar(ClientPage, 'client');
-const FindWorksWithSidebar = withSidebar(FindWorks, 'worker');
+const WorkerWithSidebar = withSidebar(Worker, 'worker');
 const AddContractWithSidebar = withSidebar(AddContract, 'client');
 const AcceptedContractsWithSidebar = withSidebar(AcceptedContracts, 'client');
 const ContractorWithSidebar = withSidebar(Contractor, 'contractor');
@@ -33,7 +34,8 @@ const App = () => {
             <Route path='/client/:id' element={<ClientWithSidebar />} />
             <Route path='/ongoingContracts/:id' element={<AcceptedContractsWithSidebar />} />
             <Route path='/contractor/:id' element={<ContractorWithSidebar />} />
-            <Route path='/worker/:id' element={<FindWorksWithSidebar />} />
+            <Route path='/worker/:id' element={<Worker />} />
+            <Route path='/applied-works/:id' element={<AppliedWorks />} />
             <Route path='/contractor/:id/my-contracts' element={<MyContractsWithSidebar />} />
           </Routes>
         </div>

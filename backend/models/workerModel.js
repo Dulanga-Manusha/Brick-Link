@@ -7,7 +7,8 @@ const workerTypeSchema = new mongoose.Schema({
 
 const workerSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'user', required: true },
-    position: { type: String, required: true }
+    position: { type: String, required: true },
+    status: { type: String, required: true }
 });
 
 const projectSchema = new mongoose.Schema({

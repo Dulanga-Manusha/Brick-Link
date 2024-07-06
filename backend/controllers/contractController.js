@@ -26,11 +26,11 @@ const getAllContracts = async (req, res) => {
       })
     );
     res.status(200).json(contractsWithClientDetails);
-  } catch (error) {
+  }catch (error) {
     res.status(500).json({
       message: error.message
-    });
-  }
+});
+}
 };
 
 
@@ -59,7 +59,11 @@ const addBidToContract = async (req, res) => {
       bidderName,
       amount,
       timestamp: new Date()
-    });
+
+    
+    })
+    console.log("done")
+    ;
 
 
     const updatedContract = await contract.save();

@@ -12,6 +12,7 @@ const MyContracts = () => {
 
   const fetchContracts = async () => {
     try {
+      console.log('userId:', userId);
       const response = await axios.get(`http://127.0.0.1:5000/api/contract/${userId}/mycontracts`);
       setContracts(response.data);
     } catch (error) {

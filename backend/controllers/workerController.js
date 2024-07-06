@@ -1,34 +1,115 @@
-import contractModel from "../models/contractModel.js";
-import userModel from "../models/userModel.js";
-import projectModel from "../models/workerModel.js";
+import workerModel from "../models/workerModel.js";
 
-const findWorks = async (req, res) => {
+// get all the projecs 
+
+const getAllProjects = async (req, res) => {
+    const projects = await workerModel.find();
+
+    res.json(projects);
+}
+
+//apply for a project 
+
+const applyToProject = async (req, res) => {
+    const { projectId } = req.params;
+    const { workerId, workerType, status } = req.body;
+
+    console.log('projectId:', projectId);
+    console.log('workerId:',workerId, 'workerType:', workerType, 'status:', status);
+  
     try {
-      // Find all projects with the status 'Open'
-      const projects = await projectModel.find({ status: 'Open' }).populate('contractId');
+      // Find the project by projectId
+      const project = await workerModel.findById(projectId);
+      console.log('project:', project)
   
-      const projectDetails = await Promise.all(
-        projects.map(async (project) => {
-          // Find the contract associated with the project
-          const contract = await contractModel.findById(project.contractId);
+      if (!project) {
+        return res.status(404).json({ message: 'Project not found' });
+      }
   
-          // Find the client associated with the contract
-          const client = await userModel.findById(contract.clientId);
+      // Create a new worker object
+      const newWorker = {
+        userId: workerId, // Assuming workerId is the userId
+        position: workerType,
+        status: status || 'pending'
+      };
+      // Add the new worker to the workers array in the project
+      project.workers.push(newWorker);
   
-          return {
-            title: contract.title,
-            description: contract.description,
-            contractorName: client ? client.name : 'Unknown',
-            workerTypes: project.workerTypes
-          };
-        })
-      );
-      console.log('projectDetails:', projectDetails);
-      res.status(200).json(projectDetails);
+      // Save the updated project document
+      await project.save();
+  
+      res.status(201).json({ message: 'Worker applied successfully', project });
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      console.error('Error applying worker:', error);
+      res.status(500).json({ message: 'An error occurred while applying worker', error });
     }
   };
+
+// get the projects that worker already applied and its status
+
+const getAppliedProjects = async (req, res) => {
+    const { workerId } = req.params;
   
-  export {findWorks} ;
+    try {
+      // Find all projects where the workerId is in the workers array
+      const projects = await workerModel.find({ 'workers.userId': workerId });
   
+      // Iterate over each project to find the work type the worker applied for
+      const appliedProjects = projects.map(project => {
+        const workerDetails = project.workers.find(worker => worker.userId.toString() === workerId);
+        const appliedWorkType = project.workerTypes.find(type => type.position === workerDetails.position);
+        return {
+          projectId: project._id,
+          contractId: project.contractId,
+          appliedWorkType,
+          workerDetails,
+        };
+      });
+      console.log('appliedProjects:', appliedProjects)
+      res.json(appliedProjects);
+      console.log(appliedProjects);
+    } catch (error) {
+      console.error('Error fetching applied projects:', error);
+      res.status(500).json({ message: 'An error occurred while fetching applied projects', error });
+    }
+  };
+
+
+  const cancelApplication = async (req, res) => {
+    const { projectId, userId } = req.params;
+    console.log('projectId:', projectId, 'userId:', userId)
+
+    try {
+        const project = await workerModel.findById(projectId);
+
+        if (!project) {
+            return res.status(404).json({ message: 'Project not found' });
+        }
+
+        // Find the index of the worker to remove
+        const workerIndex = project.workers.findIndex(worker => worker.userId.toString() === userId);
+
+        if (workerIndex === -1) {
+            return res.status(404).json({ message: 'Worker not found in this project' });
+        }
+
+        // Remove the worker from the workers array
+        project.workers.splice(workerIndex, 1);
+
+        await project.save();
+
+        res.json({ message: 'Application cancelled successfully', project });
+    } catch (error) {
+        console.error('Error cancelling application:', error);
+        res.status(500).json({ message: 'An error occurred while cancelling application', error });
+    }
+};
+  
+
+
+
+
+
+
+
+export { getAllProjects, applyToProject, getAppliedProjects, cancelApplication };
