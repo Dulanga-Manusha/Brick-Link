@@ -15,12 +15,6 @@ a{
   text-decoration: none;
   color: inherit;
 }
-<<<<<<< Updated upstream
-.app{
-  width: 80%;
-  margin: auto;
-}
-=======
 .app-container {
   width: 100%;
   background-color: #f8f9fa;
@@ -28,4 +22,3 @@ a{
   margin: auto;
 }
 
->>>>>>> Stashed changes

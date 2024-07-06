@@ -69,24 +69,13 @@ const addBidToContract = async (req, res) => {
 const getContractsByContractor = async (req, res) => {
   const { contractorId } = req.params;
   try {
-    // Query contracts where the status is 'Project Started' and the contractor has placed a bid
+    
     const contracts = await contractModel.find({
       status: 'Project Started',
       'bids.bidderId': contractorId
     });
 
-    // Fetch client details for each contract
-    const contractsWithClientDetails = await Promise.all(
-      contracts.map(async (contract) => {
-        const client = await userModel.findById(contract.clientId, 'name'); // Fetch the client name
-        return {
-          ...contract.toObject(),
-          clientName: client ? client.name : 'Unknown' // Add client name to the contract details
-        };
-      })
-    );
-
-    res.status(200).json(contractsWithClientDetails);
+    res.status(200).json(contracts);
   } catch (error) {
     res.status(500).json({
       message: error.message

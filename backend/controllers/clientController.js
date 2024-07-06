@@ -56,6 +56,7 @@ const createContract = async (req, res) => {
         status,
         bids
     } = req.body;
+    console.log(req.body);
     const newContract = new contractModel({
         title,
         description,
@@ -118,6 +119,7 @@ const acceptBidByClient = async (req, res) => {
         contract.status = 'Project started';
         // Keep only the accepted bid
         contract.bids = [bid];
+        console.log(contract);
         // // Save the updated contract
         await contract.save();
 
@@ -139,7 +141,7 @@ const rejectBidByClient = async (req, res) => {
         contractId,
         bidId
     } = req.params;
-    
+
     try {
         const contract = await contractModel.findById(contractId);
         if (!contract) {
@@ -176,12 +178,16 @@ const rejectBidByClient = async (req, res) => {
 
 // get client accepted contracts
 const getClientAccept = async (req, res) => {
+    const {
+        clientId
+    } = req.params;
+
     try {
-        const clientId = req.params.clientId;
         const contracts = await contractModel.find({
             clientId: clientId,
             status: 'Project Started'
         });
+        console.log(contracts);
         res.status(200).json(contracts);
     } catch (error) {
         res.status(500).json({
@@ -189,6 +195,7 @@ const getClientAccept = async (req, res) => {
         });
     }
 };
+
 
 
 export {

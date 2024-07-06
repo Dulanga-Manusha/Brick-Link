@@ -1,22 +1,3 @@
-<<<<<<< Updated upstream
-.navbar{
-    padding: 20px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.navbar .logo{
-    width: 150px;
-}
-.navbar-menu{
-    display: flex;
-    list-style: none;
-    gap: 20px;
-    color: #49557e;
-    font-size: 18px;
-}
-.navbar-right{
-=======
 .navbar {
     width: 100% !important; /* Take full width */
     top: 0; /* Align it to the top */
@@ -55,49 +36,21 @@
 }
 
 .navbar-right {
->>>>>>> Stashed changes
     display: flex;
     gap: 40px;
     align-items: center;
 }
-<<<<<<< Updated upstream
-.navbar button{
-    background: transparent;
-    font-size: 16px;
-    color: #49557e;
-    border: 1px solid black;
-=======
 
 .navbar button {
     background: transparent;
     font-size: 16px;
     color: #adb5bd; /* Lighter text color */
     border: 1px solid #adb5bd;
->>>>>>> Stashed changes
     padding: 10px 30px;
     border-radius: 50px;
     cursor: pointer;
     transition: 0.3s;
 }
-<<<<<<< Updated upstream
-.navbar button:hover{
-    background: #fff4f2;
-}
-.navbar .active {
-    padding-bottom: 2px;
-    border-bottom: 2px solid #49557e;
-}
-.navbar li{
-    cursor: pointer;
-}
-.navbar-search-icon{
-    position: relative;
-}
-.navbar-profile{
-    position: relative;
-}
-.nav-profile-dropdown{
-=======
 
 .navbar button:hover {
     background: #495057; /* Darker background on hover */
@@ -111,85 +64,30 @@
 }
 
 .nav-profile-dropdown {
->>>>>>> Stashed changes
     position: absolute;
     display: none;
     right: 0;
     z-index: 1;
 }
-<<<<<<< Updated upstream
-.navbar-profile:hover .nav-profile-dropdown{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background-color:#fff2ef;
-=======
 
 .navbar-profile:hover .nav-profile-dropdown {
     display: flex;
     flex-direction: column;
     gap: 10px;
     background-color: #495057;
->>>>>>> Stashed changes
     padding: 12px 25px;
     border-radius: 4px;
     border: 1px solid tomato;
     outline: 2px solid white;
     list-style: none;
 }
-<<<<<<< Updated upstream
-.nav-profile-dropdown li{
-=======
 
 .nav-profile-dropdown li {
->>>>>>> Stashed changes
     display: flex;
     align-items: center;
     gap: 10px;
     cursor: pointer;
 }
-<<<<<<< Updated upstream
-.nav-profile-dropdown img{
-    width: 20px;
-}
-.nav-profile-dropdown li:hover{
-    color: tomato;
-}
-
-@media (max-width:1050px) {
-    .navbar .logo{
-        width: 140px;
-    }
-    .navbar-menu{
-        gap: 20px;
-        font-size: 17px;
-    }
-    .navbar-right{
-        gap: 30px;
-    }
-    .navbar-right img{
-        width: 22px;
-    }
-    .navbar-right button{
-        padding: 8px 25px;
-    }
-}
-@media (max-width:900px) {
-    .navbar .logo{
-        width: 120px;
-    }
-    .navbar-menu{
-        gap: 15px;
-        font-size: 16px;
-    }
-    .navbar-right{
-        gap: 20px;
-    }
-    .navbar-right img{
-        width: 20px;
-    }
-    .navbar-right button{
-=======
 
 .nav-profile-dropdown img {
     width: 20px;
@@ -241,22 +139,13 @@
     }
 
     .navbar-right button {
->>>>>>> Stashed changes
         padding: 7px 20px;
         font-size: 15px;
     }
 }
 
-<<<<<<< Updated upstream
-@media (max-width:750px) {
-    .navbar-menu{
-        display: none;
-    }
-}
-=======
 @media (max-width: 750px) {
     .navbar-menu {
         display: none;
     }
 }
->>>>>>> Stashed changes
