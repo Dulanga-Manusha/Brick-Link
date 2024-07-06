@@ -1,5 +1,11 @@
 import express from 'express';
-import { getAllContracts,createContract, getClientContracts, getContractById, addBidToContract, deleteContract } from '../controllers/contractController.js';
+
+import {
+    getAllContracts,
+    addBidToContract,
+    getContractsByContractor,
+    addPositionsToContract
+} from '../controllers/contractController.js';
 
 const route = express.Router();
 
@@ -7,21 +13,13 @@ const route = express.Router();
 
 route.get("/getAllContracts", getAllContracts);
 
-route.get('/client/:clientId', getClientContracts);
-
-// Get a specific contract by ID
-route.get('/:id', getContractById);
-
-// Create a new contract
-route.post('/', createContract);
-
 // Add a bid to a contract
 route.post('/:id/bids', addBidToContract);
 
-// Delete a contract
-route.delete('/:id', deleteContract);
+// Get contracts by contractor ID
+route.get('/:contractorId/mycontracts', getContractsByContractor);
 
-
-
+// add positions to a contract
+route.post('/:contractId/request', addPositionsToContract);
 
 export default route;

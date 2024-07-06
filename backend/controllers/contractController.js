@@ -1,103 +1,128 @@
 import contractModel from "../models/contractModel.js";
+import userModel from "../models/userModel.js";
+import projectModel from "../models/workerModel.js";
 
 
-
-const getClientContracts = async (req, res) => {
+const getAllContracts = async (req, res) => {
   try {
-      const clientId = req.params.clientId;
-      const contracts = await contractModel.find({clientId : clientId});
-      console.log(contracts);
-      res.status(200).json(contracts);
+    const contracts = await contractModel.find(); // Fetch all contracts
+
+    // Fetch client details for each contract
+    const contractsWithClientDetails = await Promise.all(
+      contracts.map(async (contract) => {
+        const client = await userModel.findById(contract.clientId, 'name'); // Fetch the client name
+        return {
+          ...contract.toObject(),
+          clientName: client ? client.name : 'Unknown' // Add client name to the contract details
+        };
+      })
+    );
+
+    res.status(200).json(contractsWithClientDetails);
   } catch (error) {
-      res.status(500).json({ message: error.message });
+    res.status(500).json({
+      message: error.message
+    });
   }
 };
-  
 
 
-  const getAllContracts = async (req, res) => {
-    try {
-      const contracts = await contractModel.find(); // Fetch all contracts
-      res.status(200).json(contracts);
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  };
+// Add a bid to a contract
+const addBidToContract = async (req, res) => {
+  const {
+    bidId,
+    bidderId,
+    bidderName,
+    amount
+  } = req.body;
+  console.log("yo yo", req.body);
 
 
-
-  // Get a specific contract by ID
-  const getContractById = async (req, res) => {
-    try {
-      const contract = await contractModel.findById(req.params.id);
-      if (!contract) {
-        return res.status(404).json({ message: 'Contract not found' });
-      }
-      res.status(200).json(contract);
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  };
-  
-  // Create a new contract
-  const createContract = async (req, res) => {
-    const { title, description, clientId, bids } = req.body;
-    const newContract = new contractModel({
-      title,
-      description,
-      clientId,
-      bids:bids || []
-    });
-  
-    try {
-      const savedContract = await newContract.save();
-      res.status(201).json(savedContract);
-    } catch (error) {
-      res.status(400).json({ message: error.message });
-    }
-  };
-  
-  // Add a bid to a contract
-  const addBidToContract = async (req, res) => {
-    const { bidId, bidderName, amount } = req.body;
-    console.log("yo yo",req.body);
-
-  
-    try {
-      const contract = await contractModel.findById(req.params.id);
-      if (!contract) {
-        return res.status(404).json({ message: 'Contract not found' });
-      }
-  
-      contract.bids.push({
-        bidId,
-        bidderName,
-        amount,
-        timestamp: new Date()
+  try {
+    const contract = await contractModel.findById(req.params.id);
+    if (!contract) {
+      return res.status(404).json({
+        message: 'Contract not found'
       });
-
-  
-      const updatedContract = await contract.save();
-      res.status(200).json(updatedContract);
-    } catch (error) {
-      res.status(400).json({ message: error.message });
     }
-  };
-  
-  // Delete a contract
-  const deleteContract = async (req, res) => {
-    try {
-      const contract = await contractModel.findById(req.params.id);
-      if (!contract) {
-        return res.status(404).json({ message: 'Contract not found' });
-      }
-  
-      await contract.remove();
-      res.status(200).json({ message: 'Contract deleted successfully' });
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  };
-  
 
-export { getAllContracts,createContract, getClientContracts, getContractById, addBidToContract, deleteContract };
+    contract.bids.push({
+      bidId,
+      bidderId,
+      bidderName,
+      amount,
+      timestamp: new Date()
+    });
+
+
+    const updatedContract = await contract.save();
+    res.status(200).json(updatedContract);
+  } catch (error) {
+    res.status(400).json({
+      message: error.message
+    });
+  }
+};
+
+
+// for my contracts in contractor
+const getContractsByContractor = async (req, res) => {
+  const { contractorId } = req.params;
+  try {
+    // Query contracts where the status is 'Project Started' and the contractor has placed a bid
+    const contracts = await contractModel.find({
+      status: 'Project Started',
+      'bids.bidderId': contractorId
+    });
+
+    // Fetch client details for each contract
+    const contractsWithClientDetails = await Promise.all(
+      contracts.map(async (contract) => {
+        const client = await userModel.findById(contract.clientId, 'name'); // Fetch the client name
+        return {
+          ...contract.toObject(),
+          clientName: client ? client.name : 'Unknown' // Add client name to the contract details
+        };
+      })
+    );
+
+    res.status(200).json(contractsWithClientDetails);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    });
+  }
+};
+
+
+// for request workers in contractor
+const addPositionsToContract = async (req, res) => {
+  const { contractId } = req.params;
+  const positions = req.body;
+
+  try {
+    const project = new projectModel({
+      contractId,
+      workerTypes: positions, 
+      workers: []
+    });
+
+    console.log(project);
+    // Save the Project document
+    await project.save();
+
+    res.status(201).json({ message: 'Project created successfully', project });
+  } catch (error) {
+    console.error('Error creating project:', error);
+    res.status(500).json({ message: 'An error occurred while creating the project', error });
+  }
+};
+
+
+
+export {
+  getAllContracts,
+  addBidToContract,
+  getContractsByContractor,
+  addPositionsToContract
+};
