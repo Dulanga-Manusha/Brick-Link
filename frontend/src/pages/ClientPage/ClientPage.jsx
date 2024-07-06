@@ -1,16 +1,3 @@
-<<<<<<< Updated upstream
-import React from 'react'
-
-const ClientPage = () => {
-  return (
-    <div>
-      Client
-    </div>
-  )
-}
-
-export default ClientPage
-=======
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
@@ -123,4 +110,4 @@ const ClientPage = () => {
 };
 
 export default ClientPage;
->>>>>>> Stashed changes
+

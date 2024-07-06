@@ -1,16 +1,3 @@
-<<<<<<< Updated upstream
-import React from 'react'
-
-const Contractor = () => {
-  return (
-    <div>
-      Contractor
-    </div>
-  )
-}
-
-export default Contractor
-=======
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate,useLocation } from 'react-router-dom';
@@ -155,4 +142,3 @@ const ContractorPage = () => {
   );
 };
 export default ContractorPage;
->>>>>>> Stashed changes

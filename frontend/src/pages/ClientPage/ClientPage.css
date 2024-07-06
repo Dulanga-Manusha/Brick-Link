@@ -102,7 +102,6 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  padding-top: 0;
 }
 
 .add-contract-page h1 {
@@ -151,8 +150,7 @@ textarea:focus {
 
 button {
   padding: 10px 20px;
-  background-color: #474747;
-  /* Green */
+  background-color: #474747; /* Green */
   color: white;
   border: none;
   cursor: pointer;
@@ -165,3 +163,4 @@ button:hover {
   background-color: #262626;
   transform: scale(1.05);
 }
+

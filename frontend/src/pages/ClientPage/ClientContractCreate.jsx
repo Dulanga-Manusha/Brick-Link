@@ -13,11 +13,10 @@ const AddContractPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:5000/api/client', {
+      const response = await axios.post('http://127.0.0.1:5000/api/contract', {
         title,
         description,
         clientId: userId,
-        status: 'open',
         bids: []
       });
       // Redirect to the client page after successful contract creation
