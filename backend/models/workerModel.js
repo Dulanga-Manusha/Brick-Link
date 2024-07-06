@@ -12,6 +12,7 @@ const workerSchema = new mongoose.Schema({
 
 const projectSchema = new mongoose.Schema({
   contractId: { type: mongoose.Schema.Types.ObjectId, ref: 'Contract', required: true },
+  status: { type: String, required: true },
   workerTypes : [workerTypeSchema],
   workers: [workerSchema]
 });

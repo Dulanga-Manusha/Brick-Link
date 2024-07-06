@@ -5,19 +5,26 @@ import projectModel from "../models/workerModel.js";
 
 const getAllContracts = async (req, res) => {
   try {
-    const contracts = await contractModel.find(); // Fetch all contracts
+    const contracts = await contractModel.find({status: 'open'}); // Fetch all contracts
 
     // Fetch client details for each contract
     const contractsWithClientDetails = await Promise.all(
       contracts.map(async (contract) => {
-        const client = await userModel.findById(contract.clientId, 'name'); // Fetch the client name
-        return {
-          ...contract.toObject(),
-          clientName: client ? client.name : 'Unknown' // Add client name to the contract details
-        };
+        try {
+          const client = await userModel.findById(contract.clientId, 'name'); // Fetch the client name
+          return {
+            ...contract.toObject(),
+            clientName: client ? client.name : 'Unknown' // Add client name to the contract details
+          };
+        } catch (error) {
+          console.error(`Error fetching client details for contract ID ${contract._id}:`, error);
+          return {
+            ...contract.toObject(),
+            clientName: 'Unknown' // Handle the case where client details cannot be fetched
+          };
+        }
       })
     );
-
     res.status(200).json(contractsWithClientDetails);
   } catch (error) {
     res.status(500).json({
@@ -67,15 +74,36 @@ const addBidToContract = async (req, res) => {
 
 // for my contracts in contractor
 const getContractsByContractor = async (req, res) => {
-  const { contractorId } = req.params;
+  const {
+    contractorId
+  } = req.params;
   try {
-    
+
     const contracts = await contractModel.find({
-      status: 'Project Started',
+      status: 'Project started',
       'bids.bidderId': contractorId
     });
 
-    res.status(200).json(contracts);
+    // Fetch client details for each contract
+    const contractsWithClientDetails = await Promise.all(
+      contracts.map(async (contract) => {
+        try {
+          const client = await userModel.findById(contract.clientId, 'name'); // Fetch the client name
+          return {
+            ...contract.toObject(),
+            clientName: client ? client.name : 'Unknown' // Add client name to the contract details
+          };
+        } catch (error) {
+          console.error(`Error fetching client details for contract ID ${contract._id}:`, error);
+          return {
+            ...contract.toObject(),
+            clientName: 'Unknown' // Handle the case where client details cannot be fetched
+          };
+        }
+      })
+    );
+    res.status(200).json(contractsWithClientDetails);
+
   } catch (error) {
     res.status(500).json({
       message: error.message
@@ -86,24 +114,33 @@ const getContractsByContractor = async (req, res) => {
 
 // for request workers in contractor
 const addPositionsToContract = async (req, res) => {
-  const { contractId } = req.params;
+  const {
+    contractId
+  } = req.params;
   const positions = req.body;
 
   try {
     const project = new projectModel({
       contractId,
-      workerTypes: positions, 
+      status: "open",
+      workerTypes: positions,
       workers: []
     });
 
-    console.log(project);
+    // console.log(project);
     // Save the Project document
     await project.save();
 
-    res.status(201).json({ message: 'Project created successfully', project });
+    res.status(201).json({
+      message: 'Project created successfully',
+      project
+    });
   } catch (error) {
     console.error('Error creating project:', error);
-    res.status(500).json({ message: 'An error occurred while creating the project', error });
+    res.status(500).json({
+      message: 'An error occurred while creating the project',
+      error
+    });
   }
 };
 

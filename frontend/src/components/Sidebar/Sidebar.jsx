@@ -14,7 +14,7 @@ const Sidebar = ({ pageType }) => {
             { text: 'Opened Contracts', href: `/contractor/${id}/my-contracts` , state: {  userId:id, userRole:'contractor' }}
         ],
         worker: [
-            { text: 'Find Works', href: '' },
+            { text: 'Find Works', href: `/worker/${id}`  , state: {  userId:id, userRole:'worker' }},
             { text: 'My Works', href: '' }
         ],
         client: [

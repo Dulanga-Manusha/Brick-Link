@@ -185,7 +185,7 @@ const getClientAccept = async (req, res) => {
     try {
         const contracts = await contractModel.find({
             clientId: clientId,
-            status: 'Project Started'
+            status: 'Project started'
         });
         console.log(contracts);
         res.status(200).json(contracts);

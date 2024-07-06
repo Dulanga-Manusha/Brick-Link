@@ -1,9 +1,11 @@
 import express from 'express';
-import {} from '../controllers/workerController.js';
+import {findWorks} from '../controllers/workerController.js';
 
 const workerRouter = express.Router();
 
 //end points
+workerRouter.get('/findWorks', findWorks);
+
 
 
 export default workerRouter;

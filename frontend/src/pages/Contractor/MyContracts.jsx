@@ -67,6 +67,7 @@ const MyContracts = () => {
               <h2>{contract.title}</h2>
               <p>{contract.description}</p>
               <h3>Client: {contract.clientName}</h3>
+              <p>Budget : $ {contract.bids[0].amount}</p>
               <table className="position-salary-table">
                 <thead>
                   <tr>
