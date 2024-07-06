@@ -2,6 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import { connectDB } from './config/db.js';
 import userRouter from './routes/userRoute.js';
+import contractRoute from "./routes/contractRoute.js"
+import clientRoute from "./routes/clientRoute.js"
+import workerRoute from "./routes/workerRoute.js"
 
 import 'dotenv/config';
 
@@ -18,8 +21,11 @@ app.use(express.json());
 //db connection
 connectDB();
 
-// api main endpoints
-app.use("/api/user", userRouter);
+// API endpoints
+app.use('/api/user', userRouter);
+app.use('/api/contract', contractRoute);
+app.use('/api/client', clientRoute);
+app.use('/api/worker', workerRoute);
 
 app.get('/', (req, res) => {
     res.send('API working')
