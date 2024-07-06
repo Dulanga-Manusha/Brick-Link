@@ -6,7 +6,11 @@ import AppDownload from '../../components/AppDownload/AppDownload'
 
 const Home = () => {
   return (
+<<<<<<< Updated upstream
     <div>
+=======
+    <div className='home'>
+>>>>>>> Stashed changes
       <Header />
         <OurServices />
         <AppDownload />

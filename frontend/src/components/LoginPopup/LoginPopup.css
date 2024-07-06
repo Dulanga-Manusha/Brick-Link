@@ -59,6 +59,13 @@
 .login-popup-condition input {
     margin-top: 5px;
 }
+<<<<<<< Updated upstream
+=======
+.login-popup-condition .check{
+    width: 13px;
+    height: 13px;
+}
+>>>>>>> Stashed changes
 .login-popup p span {
     color: tomato;
     font-weight: 500;

@@ -1,77 +1,101 @@
 /* ClientPage.css */
 
 .contracts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
-  }
-  
-  .contract-card {
-    background-color: #000000;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(74, 74, 74, 0.1);
-    padding: 16px;
-    width: 300px;
-    margin: 8px;
-    transition: transform 0.2s;
-  }
-  
-  .contract-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .contract-card h2 {
-    margin: 0 0 8px 0;
-    font-size: 1.5em;
-  }
-  
-  .contract-card p {
-    margin: 0 0 16px 0;
-    font-size: 1em;
-  }
-  
-  .contract-card ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .contract-card ul li {
-    background-color: #434343;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 8px;
-    margin: 4px 0;
-  }
-  
-  .add-contract-button {
-    padding: 10px 20px;
-    margin: 20px 0;
-    background-color: #8d8b8b; /* Green */
-    color: rgb(30, 30, 30);
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 1em;
-    transition: background-color 0.3s, transform 0.2s;
-  }
-  
-  .add-contract-button:hover {
-    background-color: #868686;
-    transform: scale(1.05);
-  }
-  
-  .add-contract-button-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.contract-card {
+  background-color: #000000;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(74, 74, 74, 0.1);
+  padding: 16px;
+  width: 320px !important;
+  margin: 8px;
+  margin-bottom: 0 !important;
+  transition: transform 0.2s;
+}
+
+.contract-card:hover {
+  transform: scale(1.05);
+}
+
+.contract-card h2 {
+  margin: 0 0 8px 0;
+  font-size: 1.5em;
+}
+
+.contract-card p {
+  margin: 0 0 16px 0;
+  font-size: 1em;
+}
+
+.contract-card ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.contract-card ul li {
+  background-color: #434343;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px;
+  margin: 4px 0;
+}
+
+.title{
+  text-align: center;
+  margin-bottom: 10px;
+}
+.bid-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.bid-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.bid-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.bid-actions button {
+  padding: 4px 8px;
+  background-color: #444;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.bid-actions button:hover {
+  background-color: #666;
+}
+.delete-button {
+  margin-top: 8px;
+  padding: 8px 16px;
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+}
 
 
 
-
-  /* AddContractPage.css */
+/* AddContractPage.css */
 
 .add-contract-page {
   display: flex;
@@ -139,3 +163,4 @@ button:hover {
   background-color: #262626;
   transform: scale(1.05);
 }
+

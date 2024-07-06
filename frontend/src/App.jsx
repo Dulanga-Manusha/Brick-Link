@@ -7,22 +7,34 @@ import LoginPopup from './components/LoginPopup/LoginPopup'
 import ClientPage from './pages/ClientPage/ClientPage'
 import Contractor from './pages/Contractor/Contractor'
 import Worker from './pages/Worker/Worker'
-import ClientProjects from './components/ClientProjects/ClientProjects'
 import AddContract from './pages/ClientPage/ClientContractCreate'
+import withSidebar from './components/withSidebar/withSidebar';
+import AcceptedContracts from './pages/ClientPage/AcceptedContracts'
+import MyContracts from './pages/Contractor/MyContracts'
+
+const ClientWithSidebar = withSidebar(ClientPage, 'client');
+const WorkerWithSidebar = withSidebar(Worker, 'worker');
+const AddContractWithSidebar = withSidebar(AddContract, 'client');
+const AcceptedContractsWithSidebar = withSidebar(AcceptedContracts, 'client');
+const ContractorWithSidebar = withSidebar(Contractor, 'contractor');
+const MyContractsWithSidebar = withSidebar(MyContracts, 'contractor');
+
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false)
   return (
     <> 
       {showLogin?<LoginPopup setShowLogin ={setShowLogin} />:<></>} 
-        <div className='app'>
+        <div className="app-container">
           <Navbar  setShowLogin ={setShowLogin} />
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/addContract' element={<AddContract />} />
-            <Route path='/client/:id' element={<ClientPage />} />
-            <Route path='/contractor/:id' element={<Contractor />} />
+            <Route path='/addContract/:id' element={<AddContractWithSidebar />} />
+            <Route path='/client/:id' element={<ClientWithSidebar />} />
+            <Route path='/ongoingContracts/:id' element={<AcceptedContractsWithSidebar />} />
+            <Route path='/contractor/:id' element={<ContractorWithSidebar />} />
             <Route path='/worker/:id' element={<Worker />} />
+            <Route path='/contractor/:id/my-contracts' element={<MyContractsWithSidebar />} />
           </Routes>
         </div>
       <Footer/>
