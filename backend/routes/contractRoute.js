@@ -1,4 +1,5 @@
 import express from 'express';
+
 import {
     getAllContracts,
     addBidToContract,
@@ -7,6 +8,7 @@ import {
 } from '../controllers/contractController.js';
 
 const route = express.Router();
+
 
 
 route.get("/getAllContracts", getAllContracts);
@@ -19,6 +21,5 @@ route.get('/:contractorId/mycontracts', getContractsByContractor);
 
 // add positions to a contract
 route.post('/:contractId/request', addPositionsToContract);
-
 
 export default route;

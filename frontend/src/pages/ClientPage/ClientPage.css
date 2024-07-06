@@ -1,0 +1,141 @@
+/* ClientPage.css */
+
+.contracts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+  
+  .contract-card {
+    background-color: #000000;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(74, 74, 74, 0.1);
+    padding: 16px;
+    width: 300px;
+    margin: 8px;
+    transition: transform 0.2s;
+  }
+  
+  .contract-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .contract-card h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.5em;
+  }
+  
+  .contract-card p {
+    margin: 0 0 16px 0;
+    font-size: 1em;
+  }
+  
+  .contract-card ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .contract-card ul li {
+    background-color: #434343;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px;
+    margin: 4px 0;
+  }
+  
+  .add-contract-button {
+    padding: 10px 20px;
+    margin: 20px 0;
+    background-color: #8d8b8b; /* Green */
+    color: rgb(30, 30, 30);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .add-contract-button:hover {
+    background-color: #868686;
+    transform: scale(1.05);
+  }
+  
+  .add-contract-button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+
+
+
+  /* AddContractPage.css */
+
+.add-contract-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.add-contract-page h1 {
+  margin-bottom: 20px;
+  font-size: 2em;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  font-size: 1em;
+  transition: border-color 0.2s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #565656;
+  outline: none;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #474747; /* Green */
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+  font-size: 1em;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #262626;
+  transform: scale(1.05);
+}

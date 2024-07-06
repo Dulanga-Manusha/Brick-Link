@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 const bidSchema = new mongoose.Schema({
+
   bidId: { type: String, required: true },
   bidderId: { type: String, required: true },
   bidderName: { type: String, required: true },
