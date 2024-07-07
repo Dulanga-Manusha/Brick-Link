@@ -12,6 +12,10 @@ import withSidebar from './components/withSidebar/withSidebar';
 import AcceptedContracts from './pages/ClientPage/AcceptedContracts'
 import MyContracts from './pages/Contractor/MyContracts'
 import AppliedWorks from './pages/Worker/AppliedWorks'
+import WorkerRequests from './pages/Contractor/WorkerRequests'
+import CurrentProjects from './pages/Contractor/CurrentProjects'
+import CurrentWorks from './pages/Worker/CurrentWorks'
+
 
 const ClientWithSidebar = withSidebar(ClientPage, 'client');
 const WorkerWithSidebar = withSidebar(Worker, 'worker');
@@ -19,6 +23,10 @@ const AddContractWithSidebar = withSidebar(AddContract, 'client');
 const AcceptedContractsWithSidebar = withSidebar(AcceptedContracts, 'client');
 const ContractorWithSidebar = withSidebar(Contractor, 'contractor');
 const MyContractsWithSidebar = withSidebar(MyContracts, 'contractor');
+const AppliedWorksWithSidebar = withSidebar(AppliedWorks, 'worker');
+const WorkerRequestsWithSidebar = withSidebar(WorkerRequests, 'contractor');
+const CurrentProjectsWithSidebar = withSidebar(CurrentProjects, 'contractor');
+const CurrentWorksWithSidebar = withSidebar(CurrentWorks, 'worker');
 
 
 const App = () => {
@@ -34,9 +42,12 @@ const App = () => {
             <Route path='/client/:id' element={<ClientWithSidebar />} />
             <Route path='/ongoingContracts/:id' element={<AcceptedContractsWithSidebar />} />
             <Route path='/contractor/:id' element={<ContractorWithSidebar />} />
-            <Route path='/worker/:id' element={<Worker />} />
-            <Route path='/applied-works/:id' element={<AppliedWorks />} />
+            <Route path='/worker/:id' element={<WorkerWithSidebar />} />
+            <Route path='/applied-works/:id' element={<AppliedWorksWithSidebar />} />
             <Route path='/contractor/:id/my-contracts' element={<MyContractsWithSidebar />} />
+            <Route path='/contractor/:id/requests' element={<WorkerRequestsWithSidebar />} />
+            <Route path='/contractor/:id/current-projects' element={<CurrentProjectsWithSidebar />} />
+            <Route path='/worker/:id/current-works' element={<CurrentWorksWithSidebar />} />
           </Routes>
         </div>
       <Footer/>

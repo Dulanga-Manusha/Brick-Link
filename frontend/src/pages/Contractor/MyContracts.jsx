@@ -40,13 +40,14 @@ const MyContracts = () => {
 
   const handlePost = async (contractId) => {
     try {
-      await axios.post(`http://127.0.0.1:5000/api/contract/${contractId}/request`, positions[contractId]);
+      const filteredPositions = (positions[contractId] || []).filter(pos => pos.position !== '' && pos.salary !== '');
+
+      await axios.post(`http://127.0.0.1:5000/api/contract/${contractId}/request`, filteredPositions);
 
       setPositions(prevPositions => ({
         ...prevPositions,
         [contractId]: []
       }));
-      // Handle success (e.g., show a message or refresh data)
     } catch (error) {
       console.error('Error posting positions:', error);
       // Handle error
@@ -56,6 +57,7 @@ const MyContracts = () => {
   // Load data when the page loads
   useEffect(() => {
     fetchContracts();
+    console.log(positions)
   }, [positions]);
 
   return (

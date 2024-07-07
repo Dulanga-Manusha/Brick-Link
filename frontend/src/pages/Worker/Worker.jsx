@@ -46,16 +46,12 @@ const Worker = () => {
     setSelectedWorkerType(''); // Reset selected worker type when changing projects
   };
 
-  const navigateToAppliedWorks = () => {
-
-    navigate(`/applied-works/${userId}` , { state: { userId, userRole } })
-    console.log('userId:', userId, 'userRole:', userRole)
-  };
 
   return (
     <div className="worker-page">
       <h1 className="title">All Projects</h1>
       <div className="projects-list">
+        {projects.length === 0 && <p>No projects available</p>}
         {projects.map(project => (
           <div key={project._id} className="project-card">
             <h2>Contract ID: {project.contractId}</h2>
@@ -72,7 +68,7 @@ const Worker = () => {
             </div>
             <div className="apply-form">
               {selectedProjectId === project._id ? (
-                <form onSubmit={(e) => {
+                <form className='form' onSubmit={(e) => {
                   e.preventDefault();
                   handleApply(project._id, selectedWorkerType);
                 }}>
@@ -97,7 +93,6 @@ const Worker = () => {
           </div>
         ))}
       </div>
-      <button className="navigate-button" onClick={navigateToAppliedWorks}>My Applied Works</button>
     </div>
   );
 };

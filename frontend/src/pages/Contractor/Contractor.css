@@ -104,3 +104,139 @@ button:hover {
   }
 }
 
+/* Workeer Requests */
+
+.worker-requests-page {
+  padding: 20px;
+  color: #000000;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.project-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  width: calc(33.33% - 16px);
+  margin-bottom: 16px;
+  transition: transform 0.2s;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+}
+
+.project-card h2 {
+  margin: 0 0 8px 0;
+  font-size: 1.5em;
+}
+
+.project-card p {
+  margin: 0 0 16px 0;
+  font-size: 1em;
+}
+
+.project-card h3 {
+  margin-bottom: 4px;
+  font-size: 1.1em;
+}
+
+.worker-requests {
+  margin-top: 10px;
+}
+
+.worker-requests table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.worker-requests table th,
+.worker-requests table td {
+  border: 1px solid #b0b0b0;
+  padding: 8px;
+  text-align: left;
+}
+
+.worker-requests table th {
+  background-color: #9d9d9d;
+}
+
+.worker-requests table td {
+  vertical-align: middle;
+}
+
+.worker-requests button {
+  margin-right: 8px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  margin-top: 0;
+}
+
+.worker-requests button:hover {
+  background-color: #0056b3;
+}
+
+.worker-requests button:nth-child(2) {
+  background-color: #dc3545;
+}
+
+.worker-requests button:nth-child(2):hover {
+  background-color: #c82333;
+}
+.action{
+  display: flex;
+  justify-content: center;
+
+}
+.button-container {
+  margin-top: 10px;
+  text-align: right;
+}
+
+.close-button {
+  background-color: #ffc107 !important;
+  color: white !important;
+}
+
+.close-button:hover {
+  background-color: #e0a800 !important;
+}
+
+.complete-button {
+  background-color: hsl(110, 89%, 32%) !important; /* Dark green */
+  color: white !important;
+}
+
+.complete-button:hover {
+  background-color: hsl(110, 89%, 45%) !important; /* Lighter green */
+}
+
+
+@media (max-width: 1199px) {
+  .project-card {
+    width: calc(50% - 16px);
+  }
+}
+
+@media (max-width: 767px) {
+  .project-card {
+    width: 100%;
+  }
+}

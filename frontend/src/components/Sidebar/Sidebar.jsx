@@ -10,12 +10,15 @@ const Sidebar = ({ pageType }) => {
 
     const links = {
         contractor: [
-            { text: 'View All Contracts', href: `/contractor/${id}` , state: {  userId:id, userRole:'contractor' }},
-            { text: 'Opened Contracts', href: `/contractor/${id}/my-contracts` , state: {  userId:id, userRole:'contractor' }}
+            { text: 'Find Contracts', href: `/contractor/${id}` , state: {  userId:id, userRole:'contractor' }},
+            { text: 'Find Workers', href: `/contractor/${id}/my-contracts` , state: {  userId:id, userRole:'contractor' }},
+            { text: 'Worker Requests', href: `/contractor/${id}/requests` , state: {  userId:id, userRole:'contractor' }},
+            { text: 'Current Projects', href: `/contractor/${id}/current-projects` , state: {  userId:id, userRole:'contractor' }}
         ],
         worker: [
             { text: 'Find Works', href: `/worker/${id}`  , state: {  userId:id, userRole:'worker' }},
-            { text: 'My Works', href: '' }
+            { text: 'My Works', href: `/applied-works/${id}`,  state: {  userId:id, userRole:'worker' } },
+            { text: 'Current Works', href: `/worker/${id}/current-works`,  state: {  userId:id, userRole:'worker' }}
         ],
         client: [
             { text: 'My Contracts', href: `/client/${id}`, state: {  userId:id, userRole:'client' } },
